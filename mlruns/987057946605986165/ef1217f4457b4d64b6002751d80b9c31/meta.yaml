@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/0_workspace/0_python/pytorch/chap_plastic_working_resource_optimization/mlruns/987057946605986165/ef1217f4457b4d64b6002751d80b9c31/artifacts
+end_time: 1708402305317
+entry_point_name: ''
+experiment_id: '987057946605986165'
+lifecycle_stage: active
+run_id: ef1217f4457b4d64b6002751d80b9c31
+run_name: Random Forest Regressor
+run_uuid: ef1217f4457b4d64b6002751d80b9c31
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708402304992
+status: 3
+tags: []
+user_id: hs

@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/0_workspace/0_python/pytorch/chap_plastic_working_resource_optimization/mlruns/398642816399679414/dde884d2127d40cda7dfdaba64d57560/artifacts
+end_time: 1708402355212
+entry_point_name: ''
+experiment_id: '398642816399679414'
+lifecycle_stage: active
+run_id: dde884d2127d40cda7dfdaba64d57560
+run_name: Session Initialized b987
+run_uuid: dde884d2127d40cda7dfdaba64d57560
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708402354883
+status: 3
+tags: []
+user_id: hs

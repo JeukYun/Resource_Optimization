@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/0_workspace/0_python/pytorch/chap_plastic_working_resource_optimization/mlruns/987057946605986165/6f78ad9e50dd487ea3dbec0fbaaf1bdb/artifacts
+end_time: 1708402305601
+entry_point_name: ''
+experiment_id: '987057946605986165'
+lifecycle_stage: active
+run_id: 6f78ad9e50dd487ea3dbec0fbaaf1bdb
+run_name: AdaBoost Regressor
+run_uuid: 6f78ad9e50dd487ea3dbec0fbaaf1bdb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708402305440
+status: 3
+tags: []
+user_id: hs

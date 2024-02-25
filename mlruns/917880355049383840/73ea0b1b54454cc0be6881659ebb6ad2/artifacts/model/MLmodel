@@ -1,0 +1,29 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.8.18
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 0.23.2
+mlflow_version: 2.10.2
+model_size_bytes: 6163
+model_uuid: 4d8926fbe9ff45a2aa806dbf22ac6151
+run_id: 73ea0b1b54454cc0be6881659ebb6ad2
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  type: dataframe
+signature:
+  inputs: '[{"type": "long", "name": "itemno", "required": true}, {"type": "long",
+    "name": "qty", "required": true}]'
+  outputs: null
+  params: null
+utc_time_created: '2024-02-20 04:09:59.999001'

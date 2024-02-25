@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/0_workspace/0_python/pytorch/chap_plastic_working_resource_optimization/mlruns/917880355049383840/b9cffcbebf2d4aa8a334374b5d321840/artifacts
+end_time: 1708402251532
+entry_point_name: ''
+experiment_id: '917880355049383840'
+lifecycle_stage: active
+run_id: b9cffcbebf2d4aa8a334374b5d321840
+run_name: Linear Regression
+run_uuid: b9cffcbebf2d4aa8a334374b5d321840
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708402251391
+status: 3
+tags: []
+user_id: hs
