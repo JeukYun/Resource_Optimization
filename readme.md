@@ -29,9 +29,11 @@
 - 최적화에 필요하지 않은 기존 'idx', 'lineno', 'Order_date', 'cnt', 'day_night_type' 컬럼은 제외
 
 #### 로봇 1,2호 및 프레스 1\~4호 데이터 
-- 측정된 시간대가 제각각이므로 전처리 필요.
+- 측정된 시간대가 제각각이므로 전처리 필요.  
+
 ![로봇데이터](data/img/image-2.png)  
-△로봇 1, 2호  
+△로봇 1, 2호    
+
 <img src="data/img/image-1.png" width="1000" height="300"/>
 
 △프레스 1\~4호
@@ -40,9 +42,13 @@
  
 
  ## 데이터 이상치 제거 및 병합
+    - 프레스 3,4호 및 로봇 1호 설비에 이상치 多확인
+
 <img src="data/img/image5.png" width="1000" height="260"/> 
- - 프레스 3,4호 및 로봇 1호 설비에 이상치 多확인
- - 이상치 제거함수 생성, 이상치 제거
+
+<br>
+
+     - 이상치 제거함수 생성, 이상치 제거
 
  ```python
  def remove_outlier(df, n):
@@ -61,11 +67,11 @@
     
     return df
  ```
- - 이상치 제거 후
+### 이상치 제거 후
 
 <img src="data/img/image6.png" width="1000" height="200"/> 
 
-- 이상치 처리 후 데이터 병합
+### 이상치 처리 후 데이터 병합
     - 공통 데이터인 8월 11일~31일까지의 데이터만 추출
     - 1분단위의 데이터로 datetime 통일
 
@@ -74,7 +80,7 @@
 △**itemno : 품목 번호 / qty : 생산량 / amp_1~6 : 각 설비의 전류 값**
 
 ## 모델 생성 및 적용
-- pycaret라이브러리 활용. autoML진행.
+    - pycaret라이브러리 활용. autoML진행.
 ```python
 # 각각 저장됨
 amp_list = ['amp_2', 'amp_3', 'amp_4', 'amp_5', 'amp_6']
@@ -98,11 +104,14 @@ for amp in amp_list:
     # 각각의 amp에 대한 모델을 저장
     save_model(tuned_best_model, model_name=f'./model/{amp}_best_model')
 ```
-- 생성된 모델 적용, 품목별 생산량에 대한 설비의 전류값 DataFrame생성
+    - 생성된 모델 적용, 품목별 생산량에 대한 설비의 전류값 DataFrame생성
 <img src="data/img/image8.png" width="350" height="450"/> 
+<br>
+<br>
+<br>
 
 
-- 품목별, 생산량, 설비별 전류 소모값 dictionary 생성
+### 품목별, 생산량, 설비별 전류 소모값 dictionary 생성
 ```python
 # ciqm : item, qty별 machine의 소비전력 예측값
 
@@ -111,7 +120,7 @@ for index, info in guide_info_df.iterrows():
     ciqm[info['itemno'], info['qty'], info['machine']] = info['current']
 ```
 
-- Mixed-Integer Programming(MIP)패키지 활용, 이진 분류기 생성
+### Mixed-Integer Programming(MIP)패키지 활용, 이진 분류기 생성
 ```python
 # xiqt : 이진분류 optimization를 시킨 모델의 소비전력 예측값 
 # 각각의 i(품목), q(생산량), t(일자:1~5)에 대하여 이진분류를 수행하는 모델(mip.Model)생성
@@ -124,7 +133,7 @@ xiqt = {
 xiqt
 ```
 
-- 목적함수 설정(mip.minimize())
+### 목적함수 설정(mip.minimize())
 ```python
 # ciqm, xiqt 가중치 계산, 최소화하도록 지정
 
@@ -134,13 +143,13 @@ model.objective = mip.minimize(
     mip.xsum(ciqm[i, q, m]*xiqt[i, q, t] for i in I for q in Q for t in T for m in M)
     )
 ```
-- 이진 분류기 모델 최적화 진행, 결과 도출
+### 이진 분류기 모델 최적화 진행, 결과 도출
 - 최적의 생산계획서 작성
     - 이진분류기에서 1을 출력 : 최적의 해
 
 <img src="data/img/image9.png" width="600" height="370"/>
 
-△mip.Model 이진분류를 통해 도출된 값을 보기쉽게 변환 : 품목별, 일자별 생산계획 수립
+△ **mip.Model 이진분류를 통해 도출된 값을 보기쉽게 변환 : 품목별, 일자별 생산계획 수립**
 ## 최종 결과
 ```python
 # 하루에 균일하게 만드는 경우
