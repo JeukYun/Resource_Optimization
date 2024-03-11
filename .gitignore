@@ -1,6 +1,0 @@
-mlruns/
-logs.log/
-guide_info_df.csv/
-data/mlruns
-model
-.gitignore
