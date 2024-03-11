@@ -32,14 +32,15 @@
 - 측정된 시간대가 제각각이므로 전처리 필요.
 ![로봇데이터](data/img/image-2.png)  
 △로봇 1, 2호  
-<img src="data/img/image-1.png" width="1657" height="460"/>  
+<img src="data/img/image-1.png" width="1000" height="300"/>
+
 △프레스 1\~4호
 
   
  
 
  ## 데이터 이상치 제거 및 병합
-<img src="data/img/image5.png" width="1500" height="400"/> 
+<img src="data/img/image5.png" width="1000" height="260"/> 
  - 프레스 3,4호 및 로봇 1호 설비에 이상치 多확인
  - 이상치 제거함수 생성, 이상치 제거
 
@@ -62,7 +63,7 @@
  ```
  - 이상치 제거 후
 
-<img src="data/img/image6.png" width="1400" height="270"/> 
+<img src="data/img/image6.png" width="1000" height="200"/> 
 
 - 이상치 처리 후 데이터 병합
     - 공통 데이터인 8월 11일~31일까지의 데이터만 추출
