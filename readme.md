@@ -18,25 +18,31 @@
 ## 프로젝트 요약 
 
 ### 데이터 확인
-![데이터](data/img/image.png)  
+<img src="data/img/image.png" width="300" height="200"/>  
+<br>
+<br>
 
-1. 공정 데이터 2022년 8월 : 8월 10일~ 8월 31일까지의 제품 생산데이터
-![공정 데이터](data/img/image2.png)
+
+#### 공정 데이터 2022년 8월 : 8월 10일~ 8월 31일까지의 제품 생산데이터
+<img src="data/img/image2.png" width="400" height="300"/>
+
 - 최적화에 필요하지 않은 기존 'idx', 'lineno', 'Order_date', 'cnt', 'day_night_type' 컬럼은 제외
 
-2. 로봇 1,2호 및 프레스 1~4호 데이터 
-![로봇데이터](data/img/image-2.png)
+#### 로봇 1,2호 및 프레스 1\~4호 데이터 
+- 측정된 시간대가 제각각이므로 전처리 필요.
+![로봇데이터](data/img/image-2.png)  
 △로봇 1, 2호  
-![프레스데이터](data/img/image-1.png)
-△프레스 1~4호
+<img src="data/img/image-1.png" width="1657" height="460"/>  
+△프레스 1\~4호
 
   
- - 측정된 시간대가 제각각이므로 전처리 필요.
+ 
 
  ## 데이터 이상치 제거 및 병합
- ![이상치](data/img/image5.png)
+<img src="data/img/image5.png" width="1500" height="400"/> 
  - 프레스 3,4호 및 로봇 1호 설비에 이상치 多확인
  - 이상치 제거함수 생성, 이상치 제거
+
  ```python
  def remove_outlier(df, n):
     # 이상치 제거 반복 횟수
@@ -56,12 +62,14 @@
  ```
  - 이상치 제거 후
 
- ![이상치 제거후](data/img/image6.png)
+<img src="data/img/image6.png" width="1400" height="270"/> 
+
 - 이상치 처리 후 데이터 병합
     - 공통 데이터인 8월 11일~31일까지의 데이터만 추출
     - 1분단위의 데이터로 datetime 통일
 
-![데이터통합](data/img/image7.png)
+<img src="data/img/image7.png" width="700" height="340"/> 
+
 △**itemno : 품목 번호 / qty : 생산량 / amp_1~6 : 각 설비의 전류 값**
 
 ## 모델 생성 및 적용
@@ -90,7 +98,7 @@ for amp in amp_list:
     save_model(tuned_best_model, model_name=f'./model/{amp}_best_model')
 ```
 - 생성된 모델 적용, 품목별 생산량에 대한 설비의 전류값 DataFrame생성
-![가이드DF](data/img/image8.png)  
+<img src="data/img/image8.png" width="350" height="450"/> 
 
 
 - 품목별, 생산량, 설비별 전류 소모값 dictionary 생성
@@ -129,7 +137,8 @@ model.objective = mip.minimize(
 - 최적의 생산계획서 작성
     - 이진분류기에서 1을 출력 : 최적의 해
 
-![최적 해](data/img/image9.png)
+<img src="data/img/image9.png" width="600" height="370"/>
+
 △mip.Model 이진분류를 통해 도출된 값을 보기쉽게 변환 : 품목별, 일자별 생산계획 수립
 ## 최종 결과
 ```python
